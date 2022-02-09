@@ -56,7 +56,7 @@ function Login(){
                 />
                 <button type="submit">{loading ? <Loading/> : 'Entrar'}</button>
             </form>
-            <StyledLink to='/'>
+            <StyledLink to='/sign-up'>
                 <span>Cadastre-se agora!</span>
             </StyledLink>
         </Container>
