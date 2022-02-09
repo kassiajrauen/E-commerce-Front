@@ -23,7 +23,6 @@ const Container = styled.div`
           font-size: 40px;
           font-family: 'Gluten', cursive;
           color: #ffffff;
-          margin-bottom: 28px;
           text-align: center;
       }
   }

@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, {useState, useContext} from 'react';
 import { Container, StyledLink } from './styles';
 import {useNavigate} from 'react-router-dom';
-import TokenContext from '../../contexts/TokenContext';
-import UserContext from '../../contexts/UserContext';
+import {TokenContext} from '../../contexts/TokenContext';
+import {UserContext} from '../../contexts/UserContext';
 
 function Login(){
     const [email, setEmail] = useState('');
@@ -21,15 +21,15 @@ function Login(){
         const promise = axios.post('http://localhost:5000/login', {email: email, password: password});
 
         setTimeout(() => {
-            promise.then(() => {
-            setUser({name: response.name});
+            promise.then((response) => {
+            setUser(response.data.name);
             setToken(response.data.token);
             navigate('/home');
         });
         }, 1000);
         promise.catch((error) => {
             setLoading(false);
-            alert(error.message);
+            alert(error.response.data.message);
         });
 }
 
