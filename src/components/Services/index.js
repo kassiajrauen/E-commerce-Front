@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; 
-import { ServiceContext } from "../../contexts/ServiceContext";
+//import { ServiceContext } from "../../contexts/ServiceContext";
 import {TokenContext} from '../../contexts/TokenContext';
 //import {UserContext} from '../../contexts/UserContext';
 
@@ -12,8 +12,8 @@ function Services() {
 
     const {token} = useContext(TokenContext);
    // const {user} = useContext(UserContext);
-    const { setPrice, setImage, setId, setDescription } = useContext(ServiceContext)
-    const [status, setStatus] = useState("");
+   // const { setPrice, setImage, setId, setDescription } = useContext(ServiceContext)
+    const [selected, setSelected] = useState();
 
     const [services, setServices] = useState([{
         id: 1,
@@ -57,17 +57,14 @@ function Services() {
     }
    
     function dataService(e, service) {
-        // e.preventDefault();
-
+       // e.preventDefault();
+        console.log(service);
         // setPrice(service.price);
         // setImage(service.image);
-        // setId(service.id);
-        // setDescription(service.description);
-        if (status == "selected"){
-            setStatus = ("");
-        } else {
-            setStatus = ("")            
-        }
+         //setId(service.id);
+        // setDescription(service.description);       
+        setSelected(service.id);
+        
     }
 
     function openShoppingCart(e){
@@ -81,7 +78,7 @@ function Services() {
 
             <div className="services-list">
                 {services.map(service => (
-                    <div onClick={(event)=> dataService(event, service)} key={service.id} className={`service ${status}`}> 
+                    <div onClick={(event)=> dataService(event, service)} key={service.id} className={`service ${selected === service.id? "selected": ""}`}> 
                         <img src={service.image} alt="logo"/>
                         <h2>{service.description}</h2>
                         <h3>R$ {service.price}</h3>

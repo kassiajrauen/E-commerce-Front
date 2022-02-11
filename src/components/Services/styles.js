@@ -40,6 +40,7 @@ const StyledServices = styled.div`
         background-color: white;
         border-radius: 12px;
         border: solid 3px #7E7E7E;
+        cursor: pointer;
     }
     .service.selected{
         border: 5px solid green;
