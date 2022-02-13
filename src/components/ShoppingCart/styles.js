@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const StyledShoppingCart = styled.div`
-    /* display: flex;
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    align-items: center; */
+   // align-items: center;
     gap:24px;
     background-color: #F7B213;
     width: 100%;
@@ -31,7 +31,7 @@ const StyledShoppingCart = styled.div`
         gap: 10px;
     }
     .service {
-        width: 150px;
+        width: 90%;
         height: 150px;
         /* display: flex;
         justify-content: space-between;
@@ -71,6 +71,79 @@ const StyledShoppingCart = styled.div`
         border: 0;
         font-size: 1.2em;
         cursor: pointer;
+    }
+    // checkout
+    .confirmation {
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .close{
+        position: fixed;
+        border-radius: 5px;
+        height: 30px;
+        width: 30px;
+        padding-top: 1px;
+        padding-right: 1px;
+        top: 24px;
+        right: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+    }
+    .container-confirmation {
+        position: relative;
+        width: 248px;
+        height: 210px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        z-index: 2000;
+    }
+    .container-confirmation h1 {
+        color: black;
+        font-family: Lexend Deca;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21px;
+        text-align: center;
+        margin-bottom: 47px;
+    }
+    .yes-no{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+        margin-bottom: -15px;
+    }
+    .no{
+        height: 52px;
+        width: 95px;
+        background-color: #CECECE;
+        border-radius: 8px;
+        color: white;
+        font-family: Lexend Deca;
+        font-weight: 400;
+        font-size: 14px;
+    }
+      
+    .yes{
+        height: 52px;
+        width: 95px;
+        background-color: #F7B213;
+        border-radius: 8px;
+        color: white;
+        font-family: Lexend Deca;
+        font-weight: 400;
+        font-size: 14px;
     }
 `
 
