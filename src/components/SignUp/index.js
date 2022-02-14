@@ -15,16 +15,16 @@ function SignUp(){
         setLoading(true);
         e.preventDefault();
 
-        const promise = axios.post('http://localhost:5000/signup', {name: name, email: email, password: password})
+        const promise = axios.post('http://localhost:5000/sign-up', {name: name, email: email, password: password})
 
         setTimeout(() => {
             promise.then(() => {
                 navigate('/');
             });
-        }, 100000);
+        }, 1000);
         promise.catch((error) => {
             setLoading(false);
-            alert(error.response.data.message);
+            alert(error.response);
         });
     }   
 
@@ -70,9 +70,9 @@ function SignUp(){
 
     function Loading(){
         return(
-            <spam color='#FFFFFF' height={50} width={50}>
+            <span color='#FFFFFF' height={50} width={50}>
                 Carregando...
-            </spam>
+            </span>
         );
     }
 }

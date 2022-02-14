@@ -22,14 +22,14 @@ function Login(){
 
         setTimeout(() => {
             promise.then((response) => {
-            setUser(response.data.name);
-            setToken(response.data.token);
+            // setUser(response.data.name);
+            // setToken(response.data.token);
             navigate('/home');
         });
         }, 1000);
         promise.catch((error) => {
             setLoading(false);
-            alert(error.response.data.message);
+            alert(error.response);
         });
 }
 

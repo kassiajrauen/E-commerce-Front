@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Home from './components/Home';
 import Services from './components/Services';
-
 
 import {TokenProvider} from "./contexts/TokenContext";
 import {UserProvider} from "./contexts/UserContext";
@@ -17,6 +17,7 @@ function App(){
                         <Routes>
                             <Route exact path='/' element={<Login />} />
                             <Route element path='/sign-up' element={<SignUp />} />
+                            <Route element path='/home' element={<Home />} />
                             <Route element path='/services' element={<Services />} />
                         </Routes>
                     </BrowserRouter>
