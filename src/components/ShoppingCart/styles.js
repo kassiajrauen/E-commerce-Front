@@ -33,45 +33,57 @@ const StyledShoppingCart = styled.div`
     .service {
         width: 90%;
         height: 150px;
-        /* display: flex;
+        display: flex;
         justify-content: space-between;
-        align-items: center; */
+        align-items: center; 
         padding: 20px 16px;
         background-color: white;
         border-radius: 12px;
         border: solid 3px #7E7E7E;
-        cursor: pointer;
+        
     }
-    .service.selected{
-        border: 5px solid green;
+    .service button{
+        width: 100px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        background-color: red;    
+        border: 0;
     }
     .service img{
         height: 75px;
         width: 120px;
     }
-    .service h3 h2 {
+    .service h3, .service h2 {
         font-family: Lexend Deca;
-        font-size: 24px;
+        font-size: 16px;
         font-weight: 700;
-        color: #FFFFFF;
+        color: black;
         padding: 10 px;
         text-decoration: none;
     }
-
+   
     button {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 80%;
+        height: 25px ;
         padding: 10px 0;
         background: green;
         color: #fff;
         padding: 20px;
-        margin: 25px;
+        margin-left: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         border-radius: 30px;       
         text-align: center;
+        font-size: 12px ;
         border: 0;
         font-size: 1.2em;
         cursor: pointer;
     }
+    
     // checkout
     .confirmation {
         position: absolute;
@@ -134,7 +146,7 @@ const StyledShoppingCart = styled.div`
         font-weight: 400;
         font-size: 14px;
     }
-      
+
     .yes{
         height: 52px;
         width: 95px;

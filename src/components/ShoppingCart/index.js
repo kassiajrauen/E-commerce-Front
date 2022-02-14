@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import {TokenContext} from '../../contexts/TokenContext';
 import {ServiceContext} from "../../contexts/ServiceContext";
+import {UserContext} from "../../contexts/UserContext"
 import { StyledShoppingCart } from "./styles";
 import { CloseOutline } from "react-ionicons";
 
@@ -11,11 +12,38 @@ import { CloseOutline } from "react-ionicons";
 function ShoppingCart() {
 
     const {token} = useContext(TokenContext);
-   // const {user} = useContext(UserContext);
+    const {user} = useContext(UserContext);
     const { selected, setSelected, services, setServices } = useContext(ServiceContext);  
     const [showConfirmation, setShowConfirmation] = useState(false);
    
     const navigate = useNavigate();
+
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    } 
+
+    async function handleServices(e, buy) {
+
+        e.preventDefault();
+
+        //console.log(config);
+        console.log("compra:" + buy);
+        let databuy = {
+            servicesPurchased: buy,
+            dateService: "28/12/2022",
+            total: total(buy)
+        };
+        console.log(databuy);
+        
+        const promise = axios.post('http://localhost:5000/registry', databuy /*, config*/);
+
+        promise.then();
+
+        promise.catch(error => console.log(error.response));
+
+    }
 
     function total(services){
         let sum = 0;        
@@ -32,13 +60,25 @@ function ShoppingCart() {
         setShowConfirmation(!showConfirmation);
     }
 
+    function deleteService(e,service) {
+
+        e.preventDefault();
+        
+        service.selected = false;
+        navigate('/shopping-cart');
+        
+    }
+
     function goToHome(e) {
-        let servicesPuchased = services.filter(services => services.selected ==true);
-        servicesPuchased = {...servicesPuchased, dateService: "28/11/1993", total: total(servicesPuchased)};
+        let servicesPurchased = services.filter(services => services.selected ==true);        
         e.preventDefault();      
-        //handleService(e); feat:checkout
-        console.log(servicesPuchased);
+        handleServices(e, servicesPurchased);        
         navigate('/home');
+    }
+
+    function goToServices(e) {
+        e.preventDefault();      
+        navigate('/services');
     }
     
     return(
@@ -47,14 +87,22 @@ function ShoppingCart() {
 
             <div className="services-list">
                 {services.filter(services => services.selected ==true).map(service => (
-                    <div key={service.id} className={`service`}> 
-                        <img src={service.image} alt="logo"/>
-                        <h2>{service.description}</h2>
-                        <h3>R$ {service.price}</h3>
+                    <div key={service.id} className={`service`}>
+                        <div> 
+                            <img src={service.image} alt="logo"/>
+                            <h2>{service.description}</h2>                         
+                            <h3>R$ {service.price}</h3>
+                        </div>       
+                        <button  onClick={(event) => deleteService(event,service)}> Excluir </button>
                     </div>
                 ))}
             </div>
-            <button  onClick={(event) => confirmation(event)}> Confirmar Serviço(s) </button>
+            <div> </div>
+            <div className="confirmation-services">
+                <button  onClick={(event) => confirmation(event)} className="checkout"> Confirmar? Total: {total(services.filter(services => services.selected ==true))}</button>
+                <button  onClick={(event) => goToServices(event)} className="backServices"> Serviços </button>
+            </div>
+            
             {showConfirmation && (<div className='confirmation'>
                 <div className='close' onClick={(event) => confirmation(event)}>
                     <CloseOutline color={'#000000'} height='25px' width='25px'/>
