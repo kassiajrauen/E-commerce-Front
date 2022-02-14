@@ -34,7 +34,7 @@ function ShoppingCart() {
 
     function goToHome(e) {
         let servicesPuchased = services.filter(services => services.selected ==true);
-        servicesPuchased = {...servicesPuchased, date: "28/11/1993", total: total(servicesPuchased)};
+        servicesPuchased = {...servicesPuchased, dateService: "28/11/1993", total: total(servicesPuchased)};
         e.preventDefault();      
         //handleService(e); feat:checkout
         console.log(servicesPuchased);
