@@ -25,9 +25,10 @@ function Services() {
 
     useEffect(()=> {
 
-        const promise = axios.get('https://localhost:5000/services', config)
+        const promise = axios.get('http://localhost:5000/services'/*, config*/)
 
         promise.then(response => {
+            
             setServices(response.data)
         }, []);
 
